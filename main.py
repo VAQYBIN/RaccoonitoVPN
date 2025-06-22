@@ -2,6 +2,8 @@ import asyncio
 
 from aiogram import Bot, Dispatcher
 from config import load_config
+from handlers import menu
+from middlewares.logging import LoggingMiddleware
 
 
 async def main():
@@ -11,6 +13,10 @@ async def main():
 
     bot = Bot(token=config.bot_token)
     dp = Dispatcher()
+
+    dp.include_routers(menu.router)
+
+    dp.message.middleware(LoggingMiddleware())
 
     await dp.start_polling(bot)
 
