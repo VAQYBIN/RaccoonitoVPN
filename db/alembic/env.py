@@ -46,7 +46,7 @@ def run_migrations_offline() -> None:
     """
     url = config.get_main_option("sqlalchemy.url")
     if url.startswith('driver://'):
-        url = os.getenv('DATABASE_URL', 'sqlite:///db.sqlite3')
+        url = os.getenv("DATABASE_URL").replace("postgresql://", "postgresql+psycopg2://")
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -68,7 +68,7 @@ def run_migrations_online() -> None:
     cfg = config.get_section(config.config_ini_section, {})
     url = cfg.get('sqlalchemy.url')
     if url.startswith('driver://'):
-        url = os.getenv('DATABASE_URL', 'sqlite:///db.sqlite3')
+        url = os.getenv("DATABASE_URL").replace("postgresql://", "postgresql+psycopg2://")
     cfg['sqlalchemy.url'] = url
 
     connectable = engine_from_config(
