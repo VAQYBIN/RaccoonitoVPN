@@ -4,6 +4,10 @@ from aiogram import Bot, Dispatcher
 from config import load_config
 from handlers import menu
 from middlewares.logging import LoggingMiddleware
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 async def main():
@@ -25,6 +29,6 @@ if __name__ == "__main__":
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
-        print("Bot was stopped manually")
-    except Exception as e:
-        print(f"Bot was stopped with error: {e}")
+        logger.info("Bot was stopped manually")
+    except Exception:
+        logger.exception("Bot was stopped with error")
