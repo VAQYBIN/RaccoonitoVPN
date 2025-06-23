@@ -7,6 +7,9 @@ import os
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from models import Base  # noqa: E402
+from dotenv import load_dotenv  # noqa: E402
+
+load_dotenv()
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

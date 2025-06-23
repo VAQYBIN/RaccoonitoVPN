@@ -1,0 +1,5 @@
+domain: https://raccoonito.org
+port: 24446
+web_path: /EatingMangoGo/
+sub_port: 2096
+sub_web_path: /usefullshocks/
