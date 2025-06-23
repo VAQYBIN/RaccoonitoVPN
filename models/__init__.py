@@ -20,4 +20,5 @@ __all__ = [
     'Transaction',
     'Log',
     'Metric',
+    'Server',
 ]
